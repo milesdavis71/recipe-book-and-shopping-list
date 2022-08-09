@@ -6,17 +6,9 @@
 <hr />
 <div class="row">
   <div class="col-xs-12">
-    <!-- 2, Listaelemre klikk esetén a (selectedRecipe)
-    event bekapcsolja az onSelectedRecipe metódust,
-    ami átadja a megklikkelt listaelem osztálypéldányát
-    a recept adataival az onSelectedRecipe metódusnak,
-    amiből kiadásra kerül this.recipeWasSelected.emit(recipe)
-    a recipes komponensnek.
-    a -->
     <app-recipe-item
       *ngFor="let recipeEl of recipes"
       [recipe]="recipeEl"
-      (selectedRecipe)="onSelectedRecipe(recipeEl)"
     ></app-recipe-item>
   </div>
 </div>
