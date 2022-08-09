@@ -1,26 +1,16 @@
 <div class="row">
   <div class="col-md-5">
-    <!--    Itt is az Outputolt adat az esemény hatására elérhető itt
-(recipeWasSelected), a listaelemre klikknél a recept összes adata
-átadásra kerül a jobb oldalra, ahol pedig az $event lefoglalt
-objektum elkapja. Mivel itt már nincs szükség továbbadásra más
-komponensbe, mert itt már a kiíratás lesz a recipe-detailben, ezért az $event
-nem lesz átadva egy metódusnak, egyszerűen csak egy változónak lesz átadva,
-(selectedRecipe)
--->
     <app-recipe-list
       (recipeWasSelected)="selectedRecipe = $event"
     ></app-recipe-list>
   </div>
   <div class="col-md-7">
-    <!-- Ha nincs kiválasztva recept, akkor ki van írva, hogy legyen kiválasztva.
-    Ha ki van választva, akkor a selectedRecipe-ben lévő recipe osztálypéldány adatai
-    átadásra kerülnek a recipe-detail komponensben lévő recipe property-nek (property binding)
-     és ez alapján lesz renderelve a jobb oldalt megjelenő recept-detail felület.
--->
     <app-recipe-detail
-      *ngIf="selectedRecipe"
+      *ngIf="selectedRecipe; else infoText"
       [recipe]="selectedRecipe"
     ></app-recipe-detail>
+    <ng-template #infoText>
+      <p>Válassz receptet!</p>
+    </ng-template>
   </div>
 </div>
